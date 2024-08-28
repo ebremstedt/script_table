@@ -38,7 +38,7 @@ json_data = {
 
 The end result is either a `SQL-script`, which you can run in BigQuery manually, or a `bigquery.Table` object, which you can use to create the table in BigQuery from Python.
 
-## Turn the assignment in
+## Turn the assignment in:
 
 - git clone this repo
 - create a new branch
