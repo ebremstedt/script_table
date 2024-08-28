@@ -1,10 +1,16 @@
 # Script bigquery table from json data
 
-Your task is to create a bigquery table in CLEAN (which means it should have a *schema*), using a snippet of JSON to infer which *types* each field has.
+Your task is to use **python** to create a **bigquery table** in CLEAN (which means it should have a *schema*), using a snippet of JSON to infer which *types* each field has.
+
+Work with the code locally, on your computer or a teammates.
+
+## Background
+
+We are doing it using code because your source system has 100 tables, with each table having 100+ fields.
 
 ## Team up!
 
-Divide into groups of 2-3 people
+Divide into groups of 2-3 people, with people you haven't previously worked with.
 
 ## Your starting JSON
 
@@ -24,8 +30,8 @@ json_data = {
 }
 ```
 
-Your task is to
-- Create a function that checks which pythonic type a value is. Then return the BigQuery Equivalent.
+# Your task is to:
+- Create a function that checks which [pythonic type](https://www.w3schools.com/python/python_datatypes.asp) a value is. Then return the [BigQuery Equivalent](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types).
 - Loop through each value of the JSON data, each time getting the BigQuery equivalent by using the function previously mentioned.
 - **No unix timestamps** are allowed. Convert it to another, suitable, data type.
 - Each function **must** use typing!
