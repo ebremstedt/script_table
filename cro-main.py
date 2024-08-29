@@ -1,9 +1,8 @@
-import json
 from google.cloud import bigquery
 from datetime import datetime
 
 
-def python_to_bigquery_type(json_data) -> any:
+def python_to_bigquery_type(json_data) -> str:
     "function that checks and returns type for json_data"
 
     if isinstance(json_data, str):
@@ -31,7 +30,7 @@ json_data = {
     "datetime": 1485789600,
     "date": "2024-08-28",
     "id": 2643743,
-    "name": "London",
+    "city": "London",
     "cod": 200,
     "isRaining": True
 }
@@ -53,6 +52,8 @@ def datetime_converter(datetime:int) -> datetime:
 def creating_table() -> list:
     """Creating a BigQuery-table from json_data"""
 
+    table_id = "ex_project.ex_dataset.ex_table"
+
     schema = []
 
     for key, value in json_data.items():
@@ -63,7 +64,7 @@ def creating_table() -> list:
     
     table = bigquery.Table(table_id, schema=schema)
 
-
+    return schema
 
 
 
