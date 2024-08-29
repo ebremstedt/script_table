@@ -81,9 +81,9 @@ def main():
     "isRaining": true
     }"""
 
-    json_data = json.loads(json_data)
+    json_data = json.loads(s=json_data)
     
-    table = create_bigquery_table(project_id, dataset_id, table_id, json_data)
+    table = create_bigquery_table(project_id=project_id, dataset_id=dataset_id, table_id=table_id, json_data=json_data)
 
     print(f"Table type: {type(table)}")
     print(f"Table ID: {table.table_id}")
