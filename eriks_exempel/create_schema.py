@@ -1,4 +1,3 @@
-import json
 from google.cloud.bigquery import SchemaField
 import datetime as dt
 from google.cloud import bigquery
@@ -51,9 +50,11 @@ def create_schema(json_data: List, timestamp_name: str)-> List[SchemaField]:
 
     return schema_list
 
-def create_table(client, dataset_id, table_id, desired_schema):
+def create_table(client: bigquery.Client, dataset_id: str, table_id: str, desired_schema: List[bigquery.SchemaField]) -> bigquery.Table:
+    """returns a table created efter desired schema"""
+
     dataset_ref = client.dataset(dataset_id)
     table_ref = dataset_ref.table(table_id)
     table = bigquery.Table(table_ref, schema=desired_schema)
     table = client.create_table(table)
-    
+    return table
