@@ -54,6 +54,34 @@ Your code should be in a folder with the name of your team.
 You can find those here:
 https://github.com/ebremstedt/script_table/pulls
 
+## Examples
+
+### SQL SCRIPT
+
+```
+CREATE TABLE `my_project.my_dataset.sales_data` (
+  sale_id INT64,
+  product_name STRING,
+  quantity_sold INT64,
+  sale_date DATE,
+  sale_amount FLOAT64
+);
+```
+
+### Python object
+
+````
+schema = [
+    bigquery.SchemaField("sale_id", "INT64"),
+    bigquery.SchemaField("product_name", "STRING"),
+    bigquery.SchemaField("quantity_sold", "INT64"),
+    bigquery.SchemaField("sale_date", "DATE"),
+    bigquery.SchemaField("sale_amount", "FLOAT64"),
+]
+
+table = bigquery.Table(table_id, schema=schema)
+```
+
 ## Helpful links
 
 https://cloud.google.com/bigquery/docs/tables
