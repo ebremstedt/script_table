@@ -3,6 +3,8 @@ from datetime import datetime
 
 
 def python_to_bigquery_type(value):
+    "function that checks and returns type for json_data"
+
     if isinstance(value, str):
         return "STRING"
     elif isinstance(value, int):
