@@ -39,7 +39,6 @@ def return_bq_type(a_dict: dict) -> dict:
     new_df = {}
     for key, value in a_dict.items():
         try:
-            parsed_value = datetime.datetime.strptime(value, "%Y-%m-%d %H:%M:%S")
             new_df[key] = "DATETIME"
             continue
         except (ValueError, TypeError):
