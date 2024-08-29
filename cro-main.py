@@ -1,26 +1,25 @@
+import json
 from google.cloud import bigquery
 from datetime import datetime
 
 
-def python_to_bigquery_type(value):
+def python_to_bigquery_type(json_data) -> any:
     "function that checks and returns type for json_data"
 
-    if isinstance(value, str):
+    if isinstance(json_data, str):
         return "STRING"
-    elif isinstance(value, int):
+    elif isinstance(json_data, int):
         return "INT64"
-    elif isinstance(value, float):
+    elif isinstance(json_data, float):
         return "FLOAT64"
-    elif isinstance(value, bool):
+    elif isinstance(json_data, bool):
         return "BOOL"
-    elif isinstance(value, list):
+    elif isinstance(json_data, list):
         return "ARRAY"
-    elif isinstance(value, dict):
+    elif isinstance(json_data, dict):
         return "STRUCT"
-    elif value is None:
+    elif json_data is None:
         return "NULL"
-    else:
-        return "UNKNOWN" 
 
 
 json_data = {
@@ -37,27 +36,34 @@ json_data = {
     "isRaining": True
 }
 
-if "datetime" in json_data:
-    timestamp = json_data["datetime"]
-   
-    date_object = datetime.utcfromtimestamp(timestamp)
+
+def datetime_converter(datetime:int) -> datetime:
+    """Converts unix to datetime"""
+
+    if "datetime" in json_data:
+        timestamp = json_data["datetime"]
     
-    formatted_date = date_object.strftime('%Y-%m-%d')
-    
-    json_data["datetime"] = formatted_date
+        date_object = datetime.utcfromtimestamp(timestamp)
+        
+        formatted_date = date_object.strftime('%Y-%m-%d')
+        
+        json_data["datetime"] = formatted_date
 
 
-schema = []
+def creating_table() -> list:
+    """Creating a BigQuery-table from json_data"""
 
-for key, value in json_data.items():
-    bigquery_type = python_to_bigquery_type(value)
- 
+    schema = []
 
-    if bigquery_type != "UNKNOWN":  
+    for key, value in json_data.items():
+        bigquery_type = python_to_bigquery_type(value)
+
         schema.append(bigquery.SchemaField(key, bigquery_type))
 
+    
+    table = bigquery.Table(table_id, schema=schema)
 
-table = bigquery.Table(table_id, schema=schema)
+
 
 
 
