@@ -1,0 +1,12 @@
+{
+    "weather": "humid",
+    "name": "Alberta",
+    "visibility": 10000,
+    "wind": 5.5,
+    "clouds": "Overcast",
+    "datetime": 1485789600,
+    "date": "2024-08-28",
+    "id": 2643743,
+    "cod": 200,
+    "isRaining": true
+}
