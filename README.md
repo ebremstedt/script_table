@@ -70,7 +70,7 @@ CREATE TABLE `my_project.my_dataset.sales_data` (
 
 ### Python object
 
-````
+```
 schema = [
     bigquery.SchemaField("sale_id", "INT64"),
     bigquery.SchemaField("product_name", "STRING"),
