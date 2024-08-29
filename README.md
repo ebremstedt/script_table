@@ -15,7 +15,7 @@ Divide into groups of 2-3 people, with people you haven't previously worked with
 ## Your starting JSON
 
 ```
-json_data = {
+json_data = """{
     "weather": "humid",
     "name": "Alberta",
     "visibility": 10000,
@@ -27,7 +27,7 @@ json_data = {
     "name": "London",
     "cod": 200,
     "isRaining": true
-}
+}"""
 ```
 
 # Your task is to:
