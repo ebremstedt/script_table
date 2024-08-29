@@ -24,7 +24,7 @@ def create_schema(json_data: List, timestamp_name: str)-> List[SchemaField]:
             typing List"""
     
    
-    schema_list = []
+    schema = []
 
     for key, value in json_data.items():
         if key == timestamp_name:
@@ -43,12 +43,12 @@ def create_schema(json_data: List, timestamp_name: str)-> List[SchemaField]:
             else:
                 value_type = "STRING" 
 
-            schema = SchemaField(key, value_type, mode="REQUIRED")
+            colum = SchemaField(key, value_type, mode="REQUIRED")
             print(f"Processed key: {key}")
 
-        schema_list.append(schema)
+        schema.append(colum)
 
-    return schema_list
+    return schema
 
 def create_table(client: bigquery.Client, dataset_id: str, table_id: str, desired_schema: List[bigquery.SchemaField]) -> bigquery.Table:
     """returns a table created efter desired schema"""
@@ -56,5 +56,4 @@ def create_table(client: bigquery.Client, dataset_id: str, table_id: str, desire
     dataset_ref = client.dataset(dataset_id)
     table_ref = dataset_ref.table(table_id)
     table = bigquery.Table(table_ref, schema=desired_schema)
-    table = client.create_table(table)
-    return table
+    return client.create_table(table)
