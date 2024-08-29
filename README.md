@@ -10,7 +10,7 @@ We are doing it using code because your source system has 100 tables, with each 
 
 ## Team up!
 
-Divide into groups of 2-3 people, with people you haven't previously worked with.
+Divide into groups of 2-3 people, with people you haven't previously worked with. Ask Erik Bremstedt to add you as a collaborator on this github repo.
 
 ## Your starting JSON
 
@@ -49,7 +49,7 @@ The end result is either a `SQL-script`, which you can run in BigQuery manually,
 
 Your code should be in a folder with the name of your team.
 
-## Optional: review another teams pull request.
+## Step 2: Review another teams pull request.
 
 You can find those here:
 https://github.com/ebremstedt/script_table/pulls
@@ -61,4 +61,4 @@ https://cloud.google.com/bigquery/docs/tables
 
 ## Note
 
-This is a small example, but some tables really do have 100+ fields. Doing this manually will not be very fun, _trust me_
+This is a small example, but some tables really do have 100+ fields. Doing this manually would not be very fun
