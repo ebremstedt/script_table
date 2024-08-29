@@ -2,9 +2,9 @@
 This script creates a BigQuery table from a JSON object.
 Made by Daniel and Gustaf for the group project "Script bigquery table from json data".
 """
-
 from datetime import datetime
 from google.cloud import bigquery
+from typing import Any, Dict, List
 import json
 
 
@@ -46,7 +46,7 @@ def infer_bigquery_type(key: str, value: any) -> str:
         raise ValueError(f"Unsupported data type: {type(value)}")
     
 
-def create_bigquery_schema(json_data: dict[str, any]) -> list:
+def create_bigquery_schema(json_data: Dict[str, Any]) -> List[bigquery.SchemaField]:
     """Create a BigQuery schema from JSON data."""
     schema = []
     for key, value in json_data.items():
@@ -55,22 +55,19 @@ def create_bigquery_schema(json_data: dict[str, any]) -> list:
     return schema
 
 
-def create_bigquery_table(project_id: str, dataset_id: str, table_id: str, json_data: dict[str, any]) -> bigquery.Table:
+def create_bigquery_table(project_id: str, dataset_id: str, table_id: str, json_data: Dict[str, Any]) -> bigquery.Table:
     """Create a BigQuery table object."""
-    schema = create_bigquery_schema(json_data)
+    schema = create_bigquery_schema(json_data=json_data)
     table_ref = bigquery.TableReference.from_string(f"{project_id}.{dataset_id}.{table_id}")
-    table = bigquery.Table(table_ref, schema=schema)
+    table = bigquery.Table(table_ref=table_ref, schema=schema)
     return table
 
 
 def main():
-
-    # hardcoded placeholder
     project_id = 'project_id'
     dataset_id = 'dataset_id'
     table_id = 'table_id'
 
-    # inputdata placeholder
     json_data = """{
     "weather": "humid",
     "name": "Alberta",
@@ -84,13 +81,10 @@ def main():
     "isRaining": true
     }"""
 
-    # avoid type errors on import
     json_data = json.loads(json_data)
     
-    # create table
     table = create_bigquery_table(project_id, dataset_id, table_id, json_data)
 
-    # preview results
     print(f"Table type: {type(table)}")
     print(f"Table ID: {table.table_id}")
     print(f"Dataset ID: {table.dataset_id}")
