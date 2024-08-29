@@ -24,7 +24,6 @@ json_data = """{
     "datetime": 1485789600,
     "date": "2024-08-28",
     "id": 2643743,
-    "name": "London",
     "cod": 200,
     "isRaining": true
 }"""
