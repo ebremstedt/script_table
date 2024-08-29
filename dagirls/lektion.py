@@ -1,8 +1,8 @@
 import datetime
 import json
-from typing import Dict, Any
+from typing import Any
 
-json_data = """{
+data_input = """{
     "weather": "humid",
     "name": "Alberta",
     "visibility": 10000,
@@ -27,10 +27,10 @@ def convert_datatype(value: Any) -> str:
     }
 
     datatype = type(value)
-    return translation.get(datatype, "UNKNOWN")
+    return translation.get(datatype)
+
 
 def create_table(data: str) -> str:
-    data_dict = json.loads(data)
 
     sql_columns = []
     for key, value in data_dict.items():
@@ -41,5 +41,6 @@ def create_table(data: str) -> str:
     create_bigquery_table = f'CREATE TABLE Weatherdata ({sql_columns_list})'
     return create_bigquery_table
 
-result = create_table(json_data)
+data_dict = json.loads(data_input)
+result = create_table(data_input)
 print(result)
